@@ -43,7 +43,7 @@ socket.emit('new-user-joined', prompt("Enter your name - "));
 
 socket.on('user-joined', name=>{
     if(name!=null){
-    append(`${name} joined the chat`,'right');
+    append(`${name} joined the chat`,'left');
     }
 })
 
