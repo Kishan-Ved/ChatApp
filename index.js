@@ -7,7 +7,7 @@
 // Contains events that happen at server level and what to do when these events happen.
 // Usually, when such events occur, functions are called at client level.
 
-const io = require('socket.io')(80)
+const io = require('socket.io')(443)
 
 const users = {};
 
