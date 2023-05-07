@@ -79,3 +79,25 @@ h1 {
     height: 24px;
     margin: 3px 0px;
 }
+
+.message {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #F7F7F7;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out;
+    animation-name: growAndShrink;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes growAndShrink {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
