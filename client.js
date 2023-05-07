@@ -13,7 +13,7 @@
 //     console.log('Server started on port 8000');
 // });
 
-const socket = io("http://localhost:8000");
+const socket = io("http://localhost:443");
 
 const form = document.getElementById("send-container");
 const messageInput = document.getElementById("messageInp");
