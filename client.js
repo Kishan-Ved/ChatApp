@@ -22,7 +22,7 @@ var audio = new Audio('ting.mp3')
 
 const append = (message,position)=>{
     const messageElement = document.createElement('div');
-    messageElement.innerText = message;
+    messageElement.innerHTML = message;
     messageElement.classList.add('message'); // Adds a class for our message element
     messageElement.classList.add(position);
     messageContainer.append(messageElement);
@@ -34,7 +34,7 @@ const append = (message,position)=>{
 form.addEventListener('submit', (e)=>{
     e.preventDefault(); // Prevents the reloading of the page
     const message = messageInput.value;
-    append(`You : ${message}`,'right')
+    append(`<b>You</b> : ${message}`,'right')
     socket.emit('send',message)
     messageInput.value = '';
 })
@@ -43,16 +43,16 @@ socket.emit('new-user-joined', prompt("Enter your name - "));
 
 socket.on('user-joined', name=>{
     if(name!=null){
-    append(`${name} joined the chat`,'left');
+    append(`<b>${name}</b> joined the chat`,'left');
     }
 })
 
 socket.on('recieve', data=>{
-    append(`${data.name} : ${data.message}`,'left');
+    append(`<b>${data.name}</b> : ${data.message}`,'left');
 })
 
 socket.on('left', name=>{
     if(name!=null){
-    append(`${name} left the chat`,'left')
+    append(`<b>${name}</b> left the chat`,'left')
     }
 })
