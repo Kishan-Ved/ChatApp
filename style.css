@@ -31,6 +31,8 @@ h1 {
 .container{
     max-width: 560px;
     border:2px solid black;
+    /* background-color: rgb(243, 211, 211); */
+    background-image:url("\\bgd.png") ;
     border-radius: 5px;;
     margin: auto;
     height:60vh;
@@ -39,7 +41,7 @@ h1 {
 }
 
 .message{
-    background-color: rgb(229, 216, 234);
+    /* background-color: rgb(229, 216, 234); */
     width: 30%;
     border: 2px solid black;
     border-radius: 5px;
@@ -49,10 +51,12 @@ h1 {
 }
 
 .left{
+    background-color: rgb(209, 227, 255);
     float:left;
 }
 
 .right{
+    background-color: rgb(219, 254, 167);
     float:right;
 }
 
@@ -65,7 +69,6 @@ h1 {
 
 #messageInp{
     width: 50%;
-    
     height: 20px;
     border: 2px solid black;
     border-radius: 5px;
@@ -84,7 +87,7 @@ h1 {
     max-width: 80%;
     padding: 10px;
     border-radius: 15px;
-    background-color: #F7F7F7;
+    /* background-color: #F7F7F7; */
     margin-bottom: 10px;
     transition: transform 0.2s ease-in-out;
     animation-name: growAndShrink;
@@ -143,3 +146,4 @@ h1 {
   width: 150px;
   flex: 1;
 }
+
