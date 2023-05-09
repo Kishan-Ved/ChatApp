@@ -18,6 +18,12 @@ io.on('connection', socket=>{
         socket.broadcast.emit('user-joined',name) // Runs for all OTHER users
         users[socket.id] = name; // Creates a new key, socket.id is a unique id for every socket connection
         console.log(users[socket.id],'joined the chat.')
+        let str = "";
+        for(const key in users){
+            str+=users[key] + ", ";
+        }
+        str = str.slice(0,-2)
+        socket.emit('welcome',str)
     })
 
     socket.on('send',message=>{
