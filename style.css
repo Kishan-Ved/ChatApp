@@ -39,7 +39,7 @@ h1 {
 }
 
 .message{
-    background-color: rgb(221, 216, 216);
+    background-color: rgb(229, 216, 234);
     width: 30%;
     border: 2px solid black;
     border-radius: 5px;
@@ -101,3 +101,45 @@ h1 {
       transform: scale(1);
     }
   }
+
+.send{
+  display: none;
+}
+
+.container{
+  display: none;
+}
+
+.navhead{
+  display: none;
+}
+
+/* Flexbox container for centering */
+.checkcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: white;
+}
+
+/* Styles for h1 element */
+.checkheading {
+  font-family: "Arial Rounded MT Bold", sans-serif;
+  font-size: 5em;
+  text-align: center;
+  background-image: linear-gradient(to bottom, rgb(77, 2, 252), purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  flex: 1;
+}
+
+/* Styles for logo element */
+.checklogo {
+  display: block;
+  margin: auto;
+  width: 150px;
+  flex: 1;
+}
