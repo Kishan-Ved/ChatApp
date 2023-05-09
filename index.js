@@ -1,33 +1,82 @@
-// Node server to handle socket io connections
 
-// npm run dev - to start nodemon (run in nodeServer)
+// const express = require('express');
+// const cors = require('cors');
 
-// node .\index.js - maybe needed (run in nodeServer)
+// const app = express();
 
-// CORS Extension enabled
+// // Enable CORS for all routes
+// app.use(cors());
 
-// Contains events that happen at server level and what to do when these events happen.
-// Usually, when such events occur, functions are called at client level.
+// // Handle your routes here
 
-const io = require('socket.io')(80)
+// app.listen(8000, () => {
+//     console.log('Server started on port 8000');
+// });
 
-var users = {};
+const socket = io("http://localhost:80");
 
-io.on('connection', socket=>{
-    socket.on('new-user-joined',name=>{ // If the event new-user-joined occurs, it runs the arrow function
-        socket.broadcast.emit('user-joined',name) // Runs for all OTHER users
-        users[socket.id] = name; // Creates a new key, socket.id is a unique id for every socket connection
-        console.log(users[socket.id],'joined the chat.')
-    })
+const form = document.getElementById("send-container");
+const messageInput = document.getElementById("messageInp");
+const messageContainer = document.querySelector(".container");
+var audio = new Audio('ting.mp3')
 
-    socket.on('send',message=>{
-        console.log(users[socket.id]," sent a message")
-        socket.broadcast.emit('recieve',{message: message,name: users[socket.id]}) // Remember spelling of broadcast, it may cause errors.
-    })
+const append = (message,position)=>{
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = message;
+    messageElement.classList.add('message'); // Adds a class for our message element
+    messageElement.classList.add(position);
+    messageContainer.append(messageElement);
+    if(position=='left') {
+        audio.play();
+    }
+}
 
-    socket.on('disconnect',message=>{
-        console.log(users[socket.id]+' left the chat.')
-        socket.broadcast.emit('left',users[socket.id]);
-        delete users[socket.id];
-    })
+form.addEventListener('submit', (e)=>{
+    e.preventDefault(); // Prevents the reloading of the page
+    const message = messageInput.value;
+    append(`<b>You</b> : ${message}`,'right')
+    socket.emit('send',message)
+    messageInput.value = '';
+})
+
+// here
+const loginForm = document.getElementById("login-form");
+const chatContainer = document.querySelector(".container");
+const chatInp = document.querySelector(".send");
+const navheading = document.querySelector(".navhead");
+const checkContainer = document.querySelector(".checkcontainer");
+
+// Hide chat interface initially
+chatContainer.style.display = "none";
+
+
+// Add event listener to the login form submit button
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("nameInp").value;
+  loginForm.style.display = "none"; // Hide the login form
+  chatContainer.style.display = "block"; // Show the chat interface
+  chatInp.style.display = "block"
+  navheading.style.display = "block";
+  checkContainer.style.display="none";
+  messageInput.focus(); // Set focus to the message input field
+  socket.emit("new-user-joined", name);
+});
+
+// socket.emit('new-user-joined', prompt("Enter your name - "));
+
+socket.on('user-joined', name=>{
+    if(name!=null){
+    append(`<b>${name}</b> joined the chat`,'left');
+    }
+})
+
+socket.on('recieve', data=>{
+    append(`<b>${data.name}</b> : ${data.message}`,'left');
+})
+
+socket.on('left', name=>{
+    if(name!=null){
+    append(`<b>${name}</b> left the chat`,'left')
+    }
 })
