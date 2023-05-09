@@ -71,6 +71,10 @@ socket.on('user-joined', name=>{
     }
 })
 
+socket.on('welcome',str=>{
+    append(`<b>Welcome to CHATTERBOX!</b><br><br>Members in the chat: <b>${str}</b>`,'middle');
+})
+
 socket.on('recieve', data=>{
     append(`<b>${data.name}</b> : ${data.message}`,'left');
 })
