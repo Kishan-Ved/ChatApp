@@ -1,17 +1,27 @@
+<!-- Run in a browser with CORS extension. -->
+
+<!-- node .\index.js in nodeServer in terminal before going live. -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHATTERBOX</title>
+    <title>Text Chat Web Application</title>
     <script defer src="https://cdn.socket.io/4.2.0/socket.io.min.js"></script>
     <script defer src="http://localhost:80/socket.io/socket.io.js"></script>
-    <script defer src="client.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
+    <div class="checkcontainer">
+        <h1 class="checkheading">CHATTERBOX</h1>
+        <img class="checklogo" src="logo.png" alt="Logo">
+      </div>
+      
+
+    <nav class="navhead">
         <h1>CHATTERBOX</h1>
         <img class="logo" src="logo.png">
     </nav>
@@ -19,12 +29,20 @@
         <!-- <div class="message right">Hi</div>
         <div class="message left">Hello</div> -->
     </div>
+    
     <div class="send">
         <form action="#" id="send-container">
             <input type="text" name="massageInp" id="messageInp">
             <button class="btn" type="submit">Send</button>
         </form>
     </div>
-    
+
+    <div id="login-form" style="text-align: center;">
+        <form>
+          <h2 style="margin-bottom: 7px; color:white">Login Page</h2>
+          <input type="text" placeholder="Enter your name" id="nameInp" required />
+          <button type="submit"style="background-color: green;color:white;border:2px solid white;border-radius: 4px;">Start Chatting</button>
+        </form>
+      </div>
 </body>
 </html>
