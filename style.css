@@ -32,7 +32,7 @@ h1 {
     max-width: 560px;
     border:2px solid black;
     /* background-color: rgb(243, 211, 211); */
-    background-image:url("\\bgd.png") ;
+    background-image:url("bgd.png") ;
     border-radius: 5px;;
     margin: auto;
     height:60vh;
