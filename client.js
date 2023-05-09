@@ -39,7 +39,31 @@ form.addEventListener('submit', (e)=>{
     messageInput.value = '';
 })
 
-socket.emit('new-user-joined', prompt("Enter your name - "));
+// here
+const loginForm = document.getElementById("login-form");
+const chatContainer = document.querySelector(".container");
+const chatInp = document.querySelector(".send");
+const navheading = document.querySelector(".navhead");
+const checkContainer = document.querySelector(".checkcontainer");
+
+// Hide chat interface initially
+chatContainer.style.display = "none";
+
+
+// Add event listener to the login form submit button
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.getElementById("nameInp").value;
+  loginForm.style.display = "none"; // Hide the login form
+  chatContainer.style.display = "block"; // Show the chat interface
+  chatInp.style.display = "block"
+  navheading.style.display = "block";
+  checkContainer.style.display="none";
+  messageInput.focus(); // Set focus to the message input field
+  socket.emit("new-user-joined", name);
+});
+
+// socket.emit('new-user-joined', prompt("Enter your name - "));
 
 socket.on('user-joined', name=>{
     if(name!=null){
