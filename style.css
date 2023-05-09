@@ -60,6 +60,13 @@ h1 {
     float:right;
 }
 
+.middle{
+    background-color: rgb(227, 178, 230);
+    margin:4px auto;
+    width: 250px;
+    text-align: center;
+}
+
 #send-container{
     text-align:center; /* Can be used to center elements in a container also */
     max-width:995px;
