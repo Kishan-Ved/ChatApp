@@ -26,7 +26,7 @@ const append = (message,position)=>{
     messageElement.classList.add('message'); // Adds a class for our message element
     messageElement.classList.add(position);
     messageContainer.append(messageElement);
-    if(position=='left') {
+    if(position!='right') {
         audio.play();
     }
 }
@@ -67,7 +67,7 @@ loginForm.addEventListener("submit", (e) => {
 
 socket.on('user-joined', name=>{
     if(name!=null){
-    append(`<b>${name}</b> joined the chat`,'left');
+    append(`<b>${name}</b> joined the chat`,'middle');
     }
 })
 
@@ -81,6 +81,6 @@ socket.on('recieve', data=>{
 
 socket.on('left', name=>{
     if(name!=null){
-    append(`<b>${name}</b> left the chat`,'left')
+    append(`<b>${name}</b> left the chat`,'middle')
     }
 })
